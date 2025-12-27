@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* --- GENEL AYARLAR --- */
+QMainWindow, QWidget {
+    background-color: #1e1e1e; /* Kömür Grisi Arka Plan */
+    color: white;
+}
+
+/* --- GRUP KUTUSU (Çerçeve) --- */
+QGroupBox {
+    border: 2px solid #00aaff; /* Neon Mavi Çerçeve */
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #00aaff;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+}
+
+/* --- BUTONLAR (Mavi ve Sığacak Şekilde) --- */
+QPushButton {
+    background-color: #005bb5;
+    border: 1px solid #004c99;
+    color: white;
+    padding: 4px; /* Yazılar sığsın diye boşluğu azalttık */
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+QPushButton:hover {
+    background-color: #0077ea; /* Parlak Mavi */
+    border: 1px solid #00aaff;
+}
+
+QPushButton:pressed {
+    background-color: #003366; /* Koyu Mavi */
+    border: 1px solid #002244;
+}
+
+/* --- SLIDER ÖZEL TASARIMI (MAVİ) --- */
+
+/* 1. Kanal (Slider'ın üzerinde gittiği yol) */
+QSlider::groove:horizontal {
+    border: 1px solid #333;
+    height: 8px; /* Yolun kalınlığı */
+    background: #222; /* Yolun rengi (Koyu) */
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+/* 2. Topuz (Tuttuğumuz kısım) */
+QSlider::handle:horizontal {
+    background: #00aaff; /* Parlak Neon Mavi */
+    border: 1px solid #00aaff;
+    width: 18px; /* Topuzun genişliği */
+    height: 18px;
+    margin: -7px 0; /* Ortalamak için */
+    border-radius: 9px; /* Yuvarlak olması için */
+}
+
+/* 3. Dolan Kısım (Solda kalan alan) */
+QSlider::sub-page:horizontal {
+    background: #005bb5; /* Butonlarla aynı mavi */
+    border-radius: 4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: #1e1e1e;
+color: white;</string>
+   </property>
+   <widget class="QLabel" name="label_video">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>640</width>
+      <height>430</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>640</width>
+      <height>430</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: black; border: 3px solid #444;</string>
+    </property>
+    <property name="text">
+     <string>BAŞLAMAK İÇİN VİDEO YÜKLEYİN</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>20</y>
+      <width>121</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>KONTROL KONSOLU</string>
+    </property>
+    <widget class="QPushButton" name="btn_roi_oynat">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>100</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>SEÇİLİ ALANI OYNAT</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_ters">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>160</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TERS AKIŞ MODU</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_kesit">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>220</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ARALIK ANALİZİ</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_sahne">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>280</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>HAREKET ALGILAMA</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_blur">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>340</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>YÜZLERİ GİZLE</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_yukle">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>VİDEO KAYNAĞI SEÇ</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_sb">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>400</y>
+       <width>121</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GRİ TONLAMA</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QSlider" name="slider_hiz">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>450</y>
+      <width>301</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="value">
+     <number>30</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_r">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>450</y>
+      <width>271</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hiz_ayari">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>480</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>OYNATMA HIZI</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_g">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>480</y>
+      <width>271</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="slider_b">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>510</y>
+      <width>271</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <zorder>label_video</zorder>
+   <zorder>slider_hiz</zorder>
+   <zorder>slider_r</zorder>
+   <zorder>hiz_ayari</zorder>
+   <zorder>slider_g</zorder>
+   <zorder>slider_b</zorder>
+   <zorder>groupBox</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
